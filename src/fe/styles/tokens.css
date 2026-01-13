@@ -1,0 +1,20 @@
+:root {
+  --bg: #0a0605;
+  --panel: #1a110e;
+  --panel2: #231712;
+
+  --text: #f5f0e8;
+  --muted: #c4b5a0;
+  --line: rgba(212, 175, 55, 0.12);
+
+  --red: #8b1e1e; /* đỏ truyền thống */
+  --red2: #b82e2e;
+  --redGlow: rgba(184, 46, 46, 0.35);
+
+  --gold: #d4af37; /* vàng nghệ truyền thống */
+  --gold2: #f4d03f;
+  --goldGlow: rgba(212, 175, 55, 0.25);
+
+  --radius: 18px;
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
+}

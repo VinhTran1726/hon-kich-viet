@@ -1,0 +1,70 @@
+<svg width="400" height="520" viewBox="0 0 400 520" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Background gradient -->
+    <rect width="400" height="520" fill="url(#grad1)"/>
+
+    <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#231712;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#1a110e;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#0a0605;stop-opacity:1" />
+        </linearGradient>
+
+        <radialGradient id="grad2" cx="30%" cy="30%">
+            <stop offset="0%" style="stop-color:#b82e2e;stop-opacity:0.4" />
+            <stop offset="60%" style="stop-color:#b82e2e;stop-opacity:0" />
+        </radialGradient>
+
+        <radialGradient id="grad3" cx="70%" cy="60%">
+            <stop offset="0%" style="stop-color:#d4af37;stop-opacity:0.2" />
+            <stop offset="60%" style="stop-color:#d4af37;stop-opacity:0" />
+        </radialGradient>
+    </defs>
+
+    <!-- Decorative overlays -->
+    <ellipse cx="120" cy="150" rx="350" ry="180" fill="url(#grad2)"/>
+    <ellipse cx="280" cy="320" rx="300" ry="200" fill="url(#grad3)"/>
+
+    <!-- Vietnamese pattern decoration -->
+    <rect x="30" y="30" width="25" height="25" stroke="#d4af37" stroke-width="1.5" fill="none" opacity="0.3"/>
+    <rect x="345" y="465" width="25" height="25" stroke="#d4af37" stroke-width="1.5" fill="none" opacity="0.3"/>
+
+    <!-- Badge "COMBO" -->
+    <rect x="280" y="30" width="90" height="35" rx="17.5" fill="#b82e2e" opacity="0.8"/>
+    <text x="325" y="53" font-family="'Noto Serif', Georgia, serif" font-size="16" font-weight="700" fill="#f5f0e8" text-anchor="middle">
+    COMBO
+    </text>
+
+    <!-- Main title -->
+    <text x="200" y="230" font-family="'Noto Serif', Georgia, serif" font-size="42" font-weight="700" fill="#d4af37" text-anchor="middle" letter-spacing="2.5">
+    HỒN KỊCH VIỆT
+    </text>
+
+    <text x="200" y="280" font-family="'Noto Serif', Georgia, serif" font-size="20" font-weight="500" fill="#c4b5a0" text-anchor="middle">
+    COMBO ĐẶC BIỆT
+    </text>
+
+    <!-- Items list -->
+    <text x="200" y="330" font-family="'Noto Serif', Georgia, serif" font-size="16" font-weight="400" fill="#c4b5a0" text-anchor="middle">
+    📚 Sách
+    </text>
+    <text x="200" y="360" font-family="'Noto Serif', Georgia, serif" font-size="16" font-weight="400" fill="#c4b5a0" text-anchor="middle">
+    🔖 Bookmark
+    </text>
+    <text x="200" y="390" font-family="'Noto Serif', Georgia, serif" font-size="16" font-weight="400" fill="#c4b5a0" text-anchor="middle">
+    💌 Postcard
+    </text>
+
+    <!-- Decorative lines -->
+    <line x1="80" y1="200" x2="320" y2="200" stroke="#d4af37" stroke-width="2" opacity="0.6"/>
+    <line x1="100" y1="410" x2="300" y2="410" stroke="#d4af37" stroke-width="2" opacity="0.6"/>
+
+    <!-- Bottom vignette -->
+    <rect width="400" height="150" y="370" fill="url(#vignette)"/>
+    <defs>
+        <linearGradient id="vignette" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#000000;stop-opacity:0" />
+            <stop offset="100%" style="stop-color:#000000;stop-opacity:0.8" />
+        </linearGradient>
+    </defs>
+</svg>

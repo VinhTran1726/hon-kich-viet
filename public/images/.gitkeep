@@ -1,0 +1,8 @@
+# Folder này chứa hình ảnh sản phẩm
+# 
+# Đặt ảnh sản phẩm vào đây, ví dụ:
+# - hon-kich-viet-single.jpg
+# - hon-kich-viet-combo.jpg
+# 
+# Sau đó cập nhật imageUrl trong src/fe/data/products.ts:
+# imageUrl: "/images/ten-file-anh.jpg"
