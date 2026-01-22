@@ -1,4 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Caveat:wght@400;700&display=swap");
+
 :root {
+  /* Vietnamese Theater Theme - Paper & Maroon */
+  --maroon: #892e2d;
+  --maroon-dark: #742c21;
+  --paper: #fef8c8;
+  --paper-hi: #fdfbe8;
+  --ink-beige: #eed4b2;
+  --ink-brown: #894b34;
+  --teal: #6dab8e;
+
+  /* Legacy tokens for compatibility */
   --bg: #0a0605;
   --panel: #1a110e;
   --panel2: #231712;
@@ -7,11 +19,11 @@
   --muted: #c4b5a0;
   --line: rgba(212, 175, 55, 0.12);
 
-  --red: #8b1e1e; /* đỏ truyền thống */
+  --red: #8b1e1e;
   --red2: #b82e2e;
   --redGlow: rgba(184, 46, 46, 0.35);
 
-  --gold: #d4af37; /* vàng nghệ truyền thống */
+  --gold: #d4af37;
   --gold2: #f4d03f;
   --goldGlow: rgba(212, 175, 55, 0.25);
 

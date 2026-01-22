@@ -32,6 +32,17 @@ export async function POST(req: Request) {
     // Tạo orderId duy nhất
     const orderId = "HKV-" + Math.random().toString(16).slice(2, 10).toUpperCase();
 
+    // MOCK MODE - Nếu dùng fallback database
+    if (process.env.USE_MOCK_DB === "true") {
+      console.log("⚠️  MOCK ORDER - Không lưu vào database:", orderId);
+      const resp: OrderResponse = { 
+        ok: true, 
+        orderId,
+        message: "⚠️ ĐẶT HÀNG THÀNH CÔNG (Mock mode - không lưu thật)" 
+      };
+      return NextResponse.json(resp);
+    }
+
     // Lưu order vào database
     const order = await Order.create({
       orderId,

@@ -112,16 +112,31 @@ export function ProductCard({ product }: { product: Product }) {
             alignItems: "center",
             justifyContent: "center",
             flexShrink: 0,
-            fontSize: 12,
-            color: "#333",
-            textAlign: "center",
-            padding: 8,
-            border: "2px solid var(--gold)"
+            border: "2px solid var(--gold)",
+            overflow: "hidden",
+            position: "relative"
           }}>
-            <div>
-              <div style={{ fontSize: 24, marginBottom: 4 }}>📱</div>
-              <div style={{ fontSize: 10, fontWeight: 600 }}>QR Code</div>
-            </div>
+            {product.qrCodeUrl ? (
+              <img 
+                src={product.qrCodeUrl} 
+                alt="QR Code"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+                }}
+              />
+            ) : (
+              <div style={{
+                fontSize: 10,
+                color: "#999",
+                textAlign: "center",
+                padding: 8,
+                lineHeight: 1.4
+              }}>
+                Chèn ảnh QR code vào đây
+              </div>
+            )}
           </div>
           <div style={{ flex: 1 }}>
             <div style={{ 

@@ -56,3 +56,14 @@ img {
   background: transparent;
   margin: 24px 0;
 }
+
+/* Theater page responsive styles */
+@media (max-width: 640px) {
+  body {
+    background: #fff;
+  }
+
+  body::before {
+    display: none;
+  }
+}

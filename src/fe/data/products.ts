@@ -10,6 +10,7 @@ export type Product = {
   imageUrl?: string;       // ← THÊM ĐƯỜNG DẪN ẢNH Ở ĐÂY (VD: "/images/sach.jpg")
   description?: string;    // ← THÊM MÔ TẢ CHI TIẾT Ở ĐÂY
   videoLink?: string;      // ← THÊM LINK VIDEO/CLIP Ở ĐÂY (YouTube, Google Drive, etc.)
+  qrCodeUrl?: string;      // ← THÊM ĐƯỜNG DẪN ẢNH QR CODE Ở ĐÂY (VD: "/images/qr-code.png")
 };
 
 export const PRODUCTS: Product[] = [
@@ -25,6 +26,7 @@ export const PRODUCTS: Product[] = [
     imageUrl: "/images/placeholder-single.svg",
     description: "Mở trang sách là mở cánh cửa quay về với tuổi thơ dân tộc - nơi tiếng hát chèo vang vọng, múa tuồng rực rỡ, cải lương da diết. Mỗi câu chữ đều chứa đựng tinh hoa ngàn năm, mỗi trang giấy đều là lời ru của tổ tiên. Hãy để cuốn sách này dẫn lối bạn về với chính mình, về với cội nguồn mà có lẽ đã quá lâu bạn chưa ghé thăm.",
     videoLink: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID",  // ← THAY BẰNG LINK VIDEO THẬT
+    qrCodeUrl: "/images/logo.png",  // ← THAY BẰNG ĐƯỜNG DẪN ẢNH QR CODE THẬT
   },
   {
     id: "hon-kich-viet-combo",
@@ -38,5 +40,6 @@ export const PRODUCTS: Product[] = [
     imageUrl: "/images/placeholder-combo.svg",
     description: "Không chỉ là một cuốn sách, đây là món quà tâm hồn dành cho những ai trân trọng bản sắc dân tộc. Bookmark kim loại ghi dấu từng trang văn, postcard nghệ thuật lưu giữ khoảnh khắc xúc động, tất cả được gói ghém trong hộp quà sang trọng. Tặng người thân, tặng bạn bè, hay tặng chính mình - vì ai cũng xứng đáng được chạm đến vẻ đẹp của truyền thống.",
     videoLink: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID",  // ← THAY BẰNG LINK VIDEO THẬT
+    qrCodeUrl: "/images/logo.png",  // ← Dùng logo tạm, thay bằng QR code thật sau
   },
 ];

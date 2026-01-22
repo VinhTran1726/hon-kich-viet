@@ -9,9 +9,9 @@ import { PRODUCTS } from "../src/fe/data/products";
 
 export default function Page() {
   return (
-    <div id="top" style={{ background: "var(--paper)", minHeight: "100vh" }}>
+    <div id="top" style={{ background: "#fff", minHeight: "100vh" }}>
       {/* Main page wrapper with max-width for desktop */}
-      <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "600px", margin: "0 auto", boxShadow: "0 0 40px rgba(0,0,0,0.1)" }}>
         <TheaterHeader />
         <IntroSection />
         <ContentSection />
