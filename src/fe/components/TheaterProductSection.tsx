@@ -372,10 +372,10 @@ function ProductCard({ product }: { product: Product }) {
               alignItems: "center",
               gap: 6
             }}>
-              🎬 Xem video giới thiệu
+              {product.qrTargetUrl ? "📱 Quét QR để tìm hiểu thêm" : "🎬 Xem video giới thiệu"}
             </div>
             <a 
-              href={product.videoLink} 
+              href={product.qrTargetUrl || product.videoLink} 
               target="_blank" 
               rel="noopener noreferrer"
               style={{
@@ -387,7 +387,9 @@ function ProductCard({ product }: { product: Product }) {
                 lineHeight: 1.5
               }}
             >
-              {product.videoLink}
+              {product.qrTargetUrl 
+                ? `hon-kich-viet.vercel.app${product.qrTargetUrl}` 
+                : product.videoLink}
             </a>
             <div style={{ 
               color: "rgba(137, 75, 52, 0.6)", 
@@ -395,7 +397,7 @@ function ProductCard({ product }: { product: Product }) {
               marginTop: 6,
               fontStyle: "italic"
             }}>
-              Quét mã QR hoặc nhấp vào link để xem
+              Quét mã QR để {product.qrTargetUrl ? "khám phá nội dung đặc biệt" : "xem video"}
             </div>
           </div>
         </div>
