@@ -38,11 +38,10 @@ export default function TuongPage() {
               Nghệ Thuật Tuồng Cổ
             </h1>
             <p style={{
-              margin: "0 0 24px 0",
+              margin: "0 auto 24px auto",
               fontSize: "16px",
               lineHeight: 1.8,
               maxWidth: "500px",
-              margin: "0 auto",
               textShadow: "0 2px 8px rgba(0,0,0,0.6)"
             }}>
               Tuồng, hay Hát bội, là loại hình nghệ thuật sân khấu cổ truyền Việt Nam, 

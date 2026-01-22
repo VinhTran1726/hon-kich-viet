@@ -38,11 +38,10 @@ export default function CheoPage() {
               Hát Chèo Dân Gian
             </h1>
             <p style={{
-              margin: "0 0 24px 0",
+              margin: "0 auto 24px auto",
               fontSize: "16px",
               lineHeight: 1.8,
               maxWidth: "500px",
-              margin: "0 auto",
               textShadow: "0 2px 8px rgba(0,0,0,0.6)"
             }}>
               Chèo là nghệ thuật sân khấu dân gian miền Bắc Việt Nam, 
