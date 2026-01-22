@@ -7,5 +7,5 @@ export type OrderDraft = {
 };
 
 export type OrderResponse =
-  | { ok: true; orderId: string }
+  | { ok: true; orderId: string; message?: string }
   | { ok: false; message: string; field?: "customerName" | "phone" | "address" };
