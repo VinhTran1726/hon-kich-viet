@@ -1,14 +1,70 @@
 import { TheaterHeader } from "../../src/fe/components/TheaterHeader";
 import { TheaterFooter } from "../../src/fe/components/TheaterFooter";
 import { CartDrawer } from "../../src/fe/components/CartDrawer";
+import { FloatingCloudsMuaRoi } from "../../src/fe/components/FloatingCloudsMuaRoi";
+import Image from "next/image";
 
-export default function CheoPage() {
+export default function MuaRoiNuocPage() {
   return (
-    <div id="top" style={{ 
-      background: "#2D5A3D", // Xanh lục truyền thống
-      minHeight: "100vh" 
-    }}>
-      <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+    <div
+      id="top"
+      style={{
+        backgroundImage: "url('/images/QR-Muaroinuoc/nen-1.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        minHeight: "100vh",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Floating clouds decoration */}
+      <FloatingCloudsMuaRoi />
+
+      {/* Green border decoration at top */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          width: "100%",
+          height: "150px",
+          zIndex: 2,
+          pointerEvents: "none",
+        }}
+      >
+        <Image
+          src="/images/QR-Muaroinuoc/boder.png"
+          alt=""
+          fill
+          style={{ objectFit: "cover", objectPosition: "top" }}
+          priority
+        />
+      </div>
+
+      {/* Green border decoration at bottom */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          width: "100%",
+          height: "150px",
+          zIndex: 2,
+          pointerEvents: "none",
+          transform: "rotate(180deg)",
+        }}
+      >
+        <Image
+          src="/images/QR-Muaroinuoc/boder.png"
+          alt=""
+          fill
+          style={{ objectFit: "cover", objectPosition: "top" }}
+        />
+      </div>
+      <div style={{ maxWidth: "600px", margin: "0 auto", position: "relative", zIndex: 3 }}>
         <TheaterHeader />
         
         {/* Hero Section */}
@@ -17,14 +73,13 @@ export default function CheoPage() {
           padding: "48px 24px",
           minHeight: "400px",
           position: "relative",
-          backgroundImage: "url('/images/hero-bg.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center"
         }}>
           <div style={{
             position: "absolute",
             inset: 0,
-            background: "radial-gradient(circle at center, rgba(45, 90, 61, 0.7), rgba(45, 90, 61, 0.9))"
+            background: "radial-gradient(circle at center, rgba(139, 69, 19, 0.7), rgba(139, 69, 19, 0.9))"
           }} />
           
           <div style={{ position: "relative", textAlign: "center", color: "var(--ink-beige)" }}>
@@ -35,7 +90,7 @@ export default function CheoPage() {
               fontFamily: "'Patrick Hand', 'Caveat', cursive",
               textShadow: "0 4px 12px rgba(0,0,0,0.8)"
             }}>
-              Hát Chèo Dân Gian
+              Múa Rối Nước Việt Nam
             </h1>
             <p style={{
               margin: "0 auto 24px auto",
@@ -44,8 +99,9 @@ export default function CheoPage() {
               maxWidth: "500px",
               textShadow: "0 2px 8px rgba(0,0,0,0.6)"
             }}>
-              Chèo là nghệ thuật sân khấu dân gian miền Bắc Việt Nam, 
-              gần gũi với đời sống nông thôn, giàu tính hài hước và châm biếm xã hội.
+              Múa rối nước là loại hình nghệ thuật biểu diễn độc đáo của Việt Nam, ra đời từ 
+              thế kỷ XI tại đồng bằng Bắc Bộ. Nghệ thuật kết hợp điêu khắc gỗ, âm nhạc dân gian 
+              và kỹ thuật điều khiển rối dưới nước, tạo nên màn trình diễn kỳ thú.
             </p>
           </div>
         </section>
@@ -71,10 +127,12 @@ export default function CheoPage() {
               gap: "16px"
             }}>
               {[
-                { title: "Gần gũi dân dã", desc: "Xuất phát từ lễ hội làng, thể hiện tâm tư người nông dân" },
-                { title: "Hài hước châm biếm", desc: "Sử dụng trò đùa, lời nói dí dỏm để phê phán thực tại" },
-                { title: "Âm nhạc dân gian", desc: "Giai điệu quen thuộc, gần gũi với dân ca quan họ, chầu văn" },
-                { title: "Trang phục giản dị", desc: "Trang phục đơn giản, phản ánh cuộc sống thường ngày" }
+                { title: "Biểu diễn trên nước", desc: "Rối được điều khiển từ dưới nước bằng cơ chế giấu sau màn tre" },
+                { title: "Nghệ thuật điêu khắc", desc: "Rối gỗ được điêu khắc tinh xảo từ gỗ sung, gỗ trầm" },
+                { title: "Câu chuyện dân gian", desc: "Phản ánh đời sống nông thôn: cày cấy, chăn trau, đánh cá, lễ hội" },
+                { title: "Âm nhạc truyền thống", desc: "Trống, sao, sáo, đàn nhị kết hợp với tiếng hát dân gian" },
+                { title: "Di sản UNESCO", desc: "Công nhận Di sản văn hóa phi vật thể đại diện của nhân loại (2008)" },
+                { title: "Nghệ thuật độc đáo", desc: "Hình thức biểu diễn rối trên mặt nước không có ở nước ngoài" }
               ].map((item, i) => (
                 <div key={i} style={{
                   padding: "20px",
@@ -85,7 +143,7 @@ export default function CheoPage() {
                 }}>
                   <h3 style={{
                     margin: "0 0 8px 0",
-                    color: "#2D5A3D",
+                    color: "#8B4513",
                     fontSize: "18px",
                     fontWeight: 700
                   }}>
@@ -107,9 +165,9 @@ export default function CheoPage() {
             <div style={{
               marginTop: "32px",
               padding: "24px",
-              background: "rgba(45, 90, 61, 0.08)",
+              background: "rgba(139, 69, 19, 0.08)",
               borderRadius: "12px",
-              border: "2px solid rgba(45, 90, 61, 0.2)",
+              border: "2px solid rgba(139, 69, 19, 0.2)",
               textAlign: "center"
             }}>
               <p style={{
@@ -119,8 +177,8 @@ export default function CheoPage() {
                 lineHeight: 1.8,
                 fontStyle: "italic"
               }}>
-                "Hát chèo là tiếng cười của người dân, là gương phản chiếu 
-                cuộc sống thường nhật với cả niềm vui lẫn nỗi buồn."
+                "Múa rối nước là một linh hồn, một màn diễn là một câu chuyện về cuộc sống, 
+                về con người Việt Nam."
               </p>
             </div>
           </div>

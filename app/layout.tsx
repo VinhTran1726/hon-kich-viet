@@ -1,6 +1,5 @@
 import "./api/globals.css";
 import { CartProvider } from "../src/fe/state/CartProvider";
-import { FloatingPuppets } from "../src/fe/components/FloatingPuppets";
 
 export const metadata = {
   title: "Hồn Kịch Việt",
@@ -13,7 +12,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <CartProvider>
           {children}
-          <FloatingPuppets />
         </CartProvider>
       </body>
     </html>

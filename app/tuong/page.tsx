@@ -1,14 +1,70 @@
 import { TheaterHeader } from "../../src/fe/components/TheaterHeader";
 import { TheaterFooter } from "../../src/fe/components/TheaterFooter";
 import { CartDrawer } from "../../src/fe/components/CartDrawer";
+import { FloatingCloudsTuong } from "../../src/fe/components/FloatingCloudsTuong";
+import Image from "next/image";
 
 export default function TuongPage() {
   return (
-    <div id="top" style={{ 
-      background: "#8B1E1E", // Đỏ truyền thống
-      minHeight: "100vh" 
-    }}>
-      <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+    <div
+      id="top"
+      style={{
+        backgroundImage: "url('/images/QR-Tuong/nen-1.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        minHeight: "100vh",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Floating clouds decoration */}
+      <FloatingCloudsTuong />
+
+      {/* Green border decoration at top */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          width: "100%",
+          height: "150px",
+          zIndex: 2,
+          pointerEvents: "none",
+        }}
+      >
+        <Image
+          src="/images/QR-Tuong/boder.png"
+          alt=""
+          fill
+          style={{ objectFit: "cover", objectPosition: "top" }}
+          priority
+        />
+      </div>
+
+      {/* Green border decoration at bottom */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          width: "100%",
+          height: "150px",
+          zIndex: 2,
+          pointerEvents: "none",
+          transform: "rotate(180deg)",
+        }}
+      >
+        <Image
+          src="/images/QR-Tuong/boder.png"
+          alt=""
+          fill
+          style={{ objectFit: "cover", objectPosition: "top" }}
+        />
+      </div>
+      <div style={{ maxWidth: "600px", margin: "0 auto", position: "relative", zIndex: 3 }}>
         <TheaterHeader />
         
         {/* Hero Section */}
@@ -35,7 +91,7 @@ export default function TuongPage() {
               fontFamily: "'Patrick Hand', 'Caveat', cursive",
               textShadow: "0 4px 12px rgba(0,0,0,0.8)"
             }}>
-              Nghệ Thuật Tuồng Cổ
+              Hát Bội - Tuồng Cổ Truyền
             </h1>
             <p style={{
               margin: "0 auto 24px auto",
@@ -44,8 +100,9 @@ export default function TuongPage() {
               maxWidth: "500px",
               textShadow: "0 2px 8px rgba(0,0,0,0.6)"
             }}>
-              Tuồng, hay Hát bội, là loại hình nghệ thuật sân khấu cổ truyền Việt Nam, 
-              mang đậm phong cách hoàng gia với trang phục rực rỡ, động tác võ thuật và âm nhạc trang trọng.
+              Hát bội (Tuồng) là loại hình nghệ thuật sân khấu truyền thống Trung Bộ và Nam Bộ, 
+              xuất hiện từ thế kỷ XII. Với trang phục hoa lệ, động tác võ thuật và âm nhạc 
+              uy nghiêm trang, Tuồng mang dấu ấn của nghệ thuật cung đình phương Bắc.
             </p>
           </div>
         </section>
@@ -71,10 +128,12 @@ export default function TuongPage() {
               gap: "16px"
             }}>
               {[
-                { title: "Trang phục rực rỡ", desc: "Áo mão hoa lệ, trang sức tinh xảo thể hiện đẳng cấp nhân vật" },
-                { title: "Âm nhạc trang trọng", desc: "Nhạc cụ truyền thống kết hợp tạo không gian hoành tráng" },
-                { title: "Võ thuật đẹp mắt", desc: "Động tác võ thuật biểu diễn uyển chuyển, mạnh mẽ" },
-                { title: "Nội dung lịch sử", desc: "Kể về anh hùng, danh tướng và sự kiện lịch sử Việt Nam" }
+                { title: "Trang phục hoàng gia", desc: "Áo mão hoa lệ, mũ kim tuyến, mặt nạ sơn dầu thể hiện phẩm chất nhân vật" },
+                { title: "Động tác võ thuật", desc: "Kết hợp võ cổ truyền với điệu bộ, biểu diễn phiêu dã và mạnh mẽ" },
+                { title: "Âm nhạc trang nghiêm", desc: "Trống chiêng, kèn, đàn nhị tạo không gian uy nghiêm, hùng tráng" },
+                { title: "Câu chuyện lịch sử", desc: "Kể về anh hùng, danh tướng, truyền thuyết và sự kiện lịch sử" },
+                { title: "Nghệ thuật biểu cảm", desc: "Tay chân, ánh mắt, nghệ thuật mã hóa truyền tải cảm xúc nhân vật" },
+                { title: "Di sản quốc gia", desc: "Được công nhận là Di sản văn hóa phi vật thể quốc gia" }
               ].map((item, i) => (
                 <div key={i} style={{
                   padding: "20px",

@@ -1,14 +1,70 @@
 import { TheaterHeader } from "../../src/fe/components/TheaterHeader";
 import { TheaterFooter } from "../../src/fe/components/TheaterFooter";
 import { CartDrawer } from "../../src/fe/components/CartDrawer";
+import { FloatingCloudsDonCa } from "../../src/fe/components/FloatingCloudsDonCa";
+import Image from "next/image";
 
 export default function CaiLuongPage() {
   return (
-    <div id="top" style={{ 
-      background: "#D4A650", // Vàng ấm miền Nam
-      minHeight: "100vh" 
-    }}>
-      <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+    <div
+      id="top"
+      style={{
+        backgroundImage: "url('/images/QR-Doncataitu/nen-1-don-ca-tai-tu.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        minHeight: "100vh",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Floating clouds decoration */}
+      <FloatingCloudsDonCa />
+
+      {/* Green border decoration at top */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          width: "100%",
+          height: "150px",
+          zIndex: 2,
+          pointerEvents: "none",
+        }}
+      >
+        <Image
+          src="/images/QR-Doncataitu/boder.png"
+          alt=""
+          fill
+          style={{ objectFit: "cover", objectPosition: "top" }}
+          priority
+        />
+      </div>
+
+      {/* Green border decoration at bottom */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          width: "100%",
+          height: "150px",
+          zIndex: 2,
+          pointerEvents: "none",
+          transform: "rotate(180deg)",
+        }}
+      >
+        <Image
+          src="/images/QR-Doncataitu/boder.png"
+          alt=""
+          fill
+          style={{ objectFit: "cover", objectPosition: "top" }}
+        />
+      </div>
+      <div style={{ maxWidth: "600px", margin: "0 auto", position: "relative", zIndex: 3 }}>
         <TheaterHeader />
         
         {/* Hero Section */}
@@ -35,7 +91,7 @@ export default function CaiLuongPage() {
               fontFamily: "'Patrick Hand', 'Caveat', cursive",
               textShadow: "0 4px 12px rgba(0,0,0,0.8)"
             }}>
-              Cải Lương Miền Nam
+              Đờn Ca Tài Tử Nam Bộ
             </h1>
             <p style={{
               margin: "0 auto 24px auto",
@@ -44,8 +100,9 @@ export default function CaiLuongPage() {
               maxWidth: "500px",
               textShadow: "0 2px 8px rgba(0,0,0,0.6)"
             }}>
-              Cải lương là loại hình sân khấu dân gian Nam Bộ, 
-              nổi tiếng với giai điệu da diết, cảm xúc sâu lắng và câu chuyện đời thường.
+              Đờn ca tài tử là loại hình âm nhạc dân gian cổ truyền Nam Bộ, hình thành từ cuối thế kỷ XIX.
+              Với giai điệu ngâu nga, du dương và sự kết hợp hoa hợp giữa nhạc cụ dân tộc,
+              Đờn ca tài tử thể hiện vẻ đẹp tâm hồn con người miền Nam.
             </p>
           </div>
         </section>
@@ -71,10 +128,12 @@ export default function CaiLuongPage() {
               gap: "16px"
             }}>
               {[
-                { title: "Giai điệu da diết", desc: "Âm nhạc buồn thảm mang âm hưởng miền Nam đồng bằng sông Cửu Long" },
-                { title: "Cảm xúc sâu lắng", desc: "Thể hiện nỗi đau, niềm vui của cuộc đời qua lời ca tiếng hát" },
-                { title: "Câu chuyện đời thường", desc: "Phản ánh tình yêu, gia đình và số phận con người" },
-                { title: "Trang phục dân gian", desc: "Áo bà ba, khăn rằn đặc trưng miền Nam Việt Nam" }
+                { title: "Nhạc cụ truyền thống", desc: "Đàn kìm, đàn tranh, đàn bầu, sóng loan, bầu, phách, trống" },
+                { title: "Giai điệu du dương", desc: "20 bài hát truyền thống với giai điệu ngâu nga, ấm áp" },
+                { title: "Nghệ thuật ngẫu hứng", desc: "Người chơi tự do biểu hiện, nhất ấm nhất kiến trong tập thể" },
+                { title: "Văn hóa dân gian", desc: "Phản ánh cuộc sống dân dã, tình cảm con người miền Nam" },
+                { title: "Di sản UNESCO", desc: "Danh hiệu Di sản văn hóa phi vật thể đại diện của nhân loại" },
+                { title: "Không gian thưởng thức", desc: "Biểu diễn trong nhà vườn, nhà thờ, lễ hội và tấu nhạc" }
               ].map((item, i) => (
                 <div key={i} style={{
                   padding: "20px",
