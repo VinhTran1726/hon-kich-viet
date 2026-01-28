@@ -1,7 +1,6 @@
 "use client";
 
-import { CloudDecor, WavyDivider } from "./WavyDivider";
-import { Logo } from "./Logo";
+import Image from "next/image";
 
 export function TheaterHeader() {
   return (
@@ -10,98 +9,150 @@ export function TheaterHeader() {
         background: "var(--maroon)",
         padding: "32px 24px 28px",
         position: "relative",
+        overflow: "visible" // Thay đổi để đám mây không bị cắt
       }}
     >
-      {/* Top cloud decoration */}
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0 }}>
-        <CloudDecor />
+      {/* Ảnh nền header - Có thể thay đổi */}
+      <div style={{
+        position: "absolute",
+        inset: 0,
+        zIndex: 0,
+        opacity: 0.15 // Độ mờ để không che chữ
+      }}>
+        <Image
+          src="/images/green-border.png"
+          alt=""
+          fill
+          style={{ 
+            objectFit: "cover",
+            objectPosition: "center"
+          }}
+        />
+      </div>
+
+      {/* Đám mây góc trái trên - TO HƠN */}
+      <div style={{
+        position: "absolute",
+        top: -30, // Đẩy lên trên để không bị cắt
+        left: -30, // Đẩy sang trái
+        width: "100px", // Tăng kích thước
+        height: "200px",
+        zIndex: 1,
+        pointerEvents: "none"
+      }}>
+        <Image
+          src="/images/cloud-large.png"
+          alt=""
+          fill
+          style={{ 
+            objectFit: "contain",
+            objectPosition: "left top"
+          }}
+        />
+      </div>
+
+      {/* Đám mây góc phải trên - TO HƠN */}
+      <div style={{
+        position: "absolute",
+        top: -30, // Đẩy lên trên để không bị cắt
+        right: -60, // Đẩy sang phải
+        width: "100px", // Tăng kích thước
+        height: "200px",
+        zIndex: 1,
+        pointerEvents: "none"
+      }}>
+        <Image
+          src="/images/cloud-small.png"
+          alt=""
+          fill
+          style={{ 
+            objectFit: "contain",
+            objectPosition: "right top"
+          }}
+        />
+      </div>
+
+      {/* Border decoration at top */}
+      <div style={{ 
+        position: "absolute", 
+        top: 0, 
+        left: 0, 
+        right: 0,
+        height: "80px",
+        zIndex: 1
+      }}>
+        <Image
+          src="/images/green-border.png"
+          alt=""
+          fill
+          style={{ 
+            objectFit: "contain",
+            objectPosition: "center top"
+          }}
+        />
       </div>
 
       {/* Content */}
-      <div
-        style={{
-          margin: "0 auto",
-          textAlign: "center",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "12px",
-          paddingTop: "24px",
-        }}
-      >
-        {/* Logo box */}
-        <div
-          style={{
-            width: "80px",
-            height: "80px",
-            border: "2px solid var(--ink-beige)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: "8px",
-            background: "rgba(238, 212, 178, 0.08)",
-            padding: "8px",
-          }}
-        >
-          <Logo width={64} height={64} imageUrl="/images/logo.png" />
+      <div style={{ 
+        position: "relative", 
+        zIndex: 2,
+        textAlign: "center" 
+      }}>
+        {/* Logo Hồn Kịch Việt */}
+        <div style={{
+          width: "80px",
+          height: "80px",
+          margin: "0 auto 16px auto",
+          position: "relative"
+        }}>
+          <Image
+            src="/images/logo.png"
+            alt="Hồn Kịch Việt"
+            fill
+            style={{ 
+              objectFit: "contain"
+            }}
+            priority
+          />
         </div>
 
-        {/* Title */}
-        <h1
-          style={{
-            margin: 0,
-            color: "var(--ink-beige)",
-            fontSize: "38px",
-            fontWeight: 700,
-            fontFamily: "'Patrick Hand', 'Caveat', cursive",
-            letterSpacing: "0.5px",
-          }}
-        >
+        <h1 style={{
+          margin: "0 0 8px 0",
+          color: "var(--ink-beige)",
+          fontSize: "32px",
+          fontWeight: 700,
+          fontFamily: "'Patrick Hand', 'Caveat', cursive"
+        }}>
           Hồn Kịch Việt
         </h1>
-
-        {/* Subtitle */}
-        <p
-          style={{
-            margin: 0,
-            color: "var(--ink-beige)",
-            fontSize: "15px",
-            opacity: 0.95,
-          }}
-        >
+        
+        <p style={{
+          margin: "0 0 20px 0",
+          color: "var(--ink-beige)",
+          fontSize: "15px",
+          opacity: 0.9
+        }}>
           Hồn kịch dân phương - Văn hoá truyền thế
         </p>
 
-        {/* CTA Button */}
-        <button
+        {/* Button */}
+        <a
+          href="#products"
           style={{
-            marginTop: "4px",
-            padding: "10px 20px",
+            display: "inline-block",
+            padding: "12px 32px",
             background: "transparent",
             border: "2px solid var(--ink-beige)",
             borderRadius: "8px",
             color: "var(--ink-beige)",
-            fontSize: "15px",
+            fontSize: "16px",
             fontWeight: 600,
-            cursor: "pointer",
-            transition: "all 0.3s ease",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "rgba(238, 212, 178, 0.1)";
-            e.currentTarget.style.transform = "translateY(-2px)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "transparent";
-            e.currentTarget.style.transform = "translateY(0)";
+            textDecoration: "none",
+            transition: "all 0.3s ease"
           }}
         >
           Tìm hiểu ngay
-        </button>
-      </div>
-
-      {/* Bottom wavy divider */}
-      <div style={{ position: "absolute", bottom: "-12px", left: 0, right: 0 }}>
-        <WavyDivider />
+        </a>
       </div>
     </header>
   );

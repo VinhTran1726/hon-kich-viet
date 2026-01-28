@@ -69,17 +69,15 @@ export default function MuaRoiNuocPage() {
         
         {/* Hero Section */}
         <section style={{
-          background: "linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5))",
           padding: "48px 24px",
           minHeight: "400px",
-          position: "relative",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
+          position: "relative"
         }}>
           <div style={{
             position: "absolute",
             inset: 0,
-            background: "radial-gradient(circle at center, rgba(139, 69, 19, 0.7), rgba(139, 69, 19, 0.9))"
+            background: "radial-gradient(circle at center, rgba(45, 90, 61, 0.4), rgba(45, 90, 61, 0.6))",
+            borderRadius: "12px"
           }} />
           
           <div style={{ position: "relative", textAlign: "center", color: "var(--ink-beige)" }}>
@@ -108,8 +106,11 @@ export default function MuaRoiNuocPage() {
 
         {/* Content */}
         <section style={{
-          background: "var(--paper)",
-          padding: "48px 24px"
+          background: "rgba(254, 248, 200, 0.85)",
+          backdropFilter: "blur(10px)",
+          padding: "48px 24px",
+          borderRadius: "12px",
+          margin: "24px 0"
         }}>
           <div style={{ maxWidth: "600px", margin: "0 auto" }}>
             <h2 style={{
