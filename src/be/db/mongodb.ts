@@ -29,25 +29,34 @@ async function connectDB() {
 
   if (!cached.promise) {
     const opts = {
-      bufferCommands: false,
-      serverSelectionTimeoutMS: 30000, // Tăng timeout lên 30s
-      socketTimeoutMS: 45000,
-      maxPoolSize: 10,
-      minPoolSize: 2,
-      retryWrites: true,
-      retryReads: true,
-    };
+  bufferCommands: false,
+  serverSelectionTimeoutMS: 10000,
+  socketTimeoutMS: 45000,
+  maxPoolSize: 10,
+  minPoolSize: 2,
+  retryWrites: true,
+  retryReads: true,
+  // dbName: "honkichviet",  // ❌ bỏ
+};
+
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      console.log("✅ MongoDB connected successfully");
+      console.log("✅ MongoDB connected successfully to database: honkichviet");
       return mongoose;
     }).catch((error) => {
-      console.error("❌ MongoDB connection error:", error.message);
-      console.error("💡 Hướng dẫn:");
-      console.error("   1. Vào MongoDB Atlas → Network Access");
-      console.error("   2. Click 'Add IP Address'");
-      console.error("   3. Chọn 'Allow Access from Anywhere' (0.0.0.0/0)");
-      console.error("   4. Hoặc thêm IP hiện tại của bạn");
+      console.error("\n❌ MongoDB connection error:");
+      console.error("   Error:", error.message);
+      console.error("\n💡 HƯỚNG DẪN FIX:");
+      console.error("   ================================");
+      console.error("   1. Vào: https://cloud.mongodb.com");
+      console.error("   2. Chọn project 'Cluster0'");
+      console.error("   3. Menu bên trái → Click 'Network Access'");
+      console.error("   4. Click nút 'ADD IP ADDRESS'");
+      console.error("   5. Chọn 'ALLOW ACCESS FROM ANYWHERE'");
+      console.error("   6. Click 'Confirm'");
+      console.error("   7. Đợi ~2 phút để Atlas update");
+      console.error("   8. Restart server: Ctrl+C và chạy 'npm run dev'");
+      console.error("   ================================\n");
       cached.promise = null;
       throw error;
     });

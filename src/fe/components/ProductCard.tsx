@@ -9,13 +9,13 @@ function Cover({ kind, imageUrl }: { kind: Product["coverKind"]; imageUrl?: stri
   // Nếu có imageUrl thì dùng ảnh thật, không thì dùng gradient
   if (imageUrl) {
     return (
-      <div style={{ height:260, borderRadius:"var(--radius)", border:"1px solid var(--line)", boxShadow:"var(--shadow)", position:"relative", overflow:"hidden", background:"var(--panel)" }}>
+      <div style={{ height:300, borderRadius:"var(--radius)", border:"1px solid var(--line)", boxShadow:"var(--shadow)", position:"relative", overflow:"hidden", background:"#FEF8C8" }}>
         <img 
           src={imageUrl} 
           alt="Cover" 
-          style={{ width:"100%", height:"100%", objectFit:"cover" }}
+          style={{ width:"100%", height:"100%", objectFit:"contain" }}
         />
-        <div style={{ position:"absolute", inset:0, background:"linear-gradient(to bottom, transparent 60%, rgba(0,0,0,.75))" }} />
+        <div style={{ position:"absolute", inset:0, background:"linear-gradient(to bottom, transparent 70%, rgba(0,0,0,.4))", pointerEvents:"none" }} />
         <div style={{ position:"absolute", left:14, bottom:14, fontWeight:700, letterSpacing:0.9, color:"var(--gold)", textShadow:"0 2px 8px rgba(0,0,0,.8)" }}>
           HỒN KỊCH VIỆT
         </div>

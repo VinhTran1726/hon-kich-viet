@@ -9,13 +9,13 @@ import { formatVND } from "../utils/formatMoney";
 function Cover({ kind, imageUrl }: { kind: Product["coverKind"]; imageUrl?: string }) {
   if (imageUrl) {
     return (
-      <div style={{ height: 200, borderRadius: "8px", border: "2px solid var(--ink-brown)", overflow: "hidden", position: "relative", marginBottom: "16px" }}>
+      <div style={{ height: 280, borderRadius: "8px", border: "2px solid var(--ink-brown)", overflow: "hidden", position: "relative", marginBottom: "16px", background: "#FEF8C8" }}>
         <img 
           src={imageUrl} 
           alt="Cover" 
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          style={{ width: "100%", height: "100%", objectFit: "contain" }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 60%, rgba(137, 75, 52, 0.3))" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 70%, rgba(137, 75, 52, 0.15))", pointerEvents: "none" }} />
       </div>
     );
   }

@@ -104,6 +104,50 @@ export default function CaiLuongPage() {
           </div>
         </section>
 
+        {/* Featured Image Section */}
+        <section style={{
+          padding: "24px",
+        }}>
+          <div style={{
+            position: "relative",
+            width: "100%",
+            height: "300px",
+            borderRadius: "16px",
+            overflow: "hidden",
+            border: "3px solid var(--ink-brown)",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.3)"
+          }}>
+            <img 
+              src="/images/don-ca-cover.png" 
+              alt="Đờn Ca Tài Tử"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover"
+              }}
+            />
+            <div style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              padding: "16px",
+              background: "linear-gradient(to top, rgba(0,0,0,0.8), transparent)",
+              color: "var(--paper)",
+              textAlign: "center"
+            }}>
+              <p style={{
+                margin: 0,
+                fontSize: "16px",
+                fontWeight: 600,
+                fontStyle: "italic"
+              }}>
+                Đờn Ca Tài Tử - Âm nhạc dân gian Nam Bộ
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Content */}
         <section style={{
           background: "rgba(254, 248, 200, 0.85)",
