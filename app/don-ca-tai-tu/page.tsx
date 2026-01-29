@@ -98,7 +98,7 @@ export default function CaiLuongPage() {
               textShadow: "0 2px 8px rgba(0,0,0,0.6)"
             }}>
               Đờn ca tài tử là loại hình âm nhạc dân gian cổ truyền Nam Bộ, hình thành từ cuối thế kỷ XIX.
-              Với giai điệu ngâu nga, du dương và sự kết hợp hoa hợp giữa nhạc cụ dân tộc,
+              Với giai điệu ngân nga, du dương và sự kết hợp giữa nhạc cụ dân tộc,
               Đờn ca tài tử thể hiện vẻ đẹp tâm hồn con người miền Nam.
             </p>
           </div>

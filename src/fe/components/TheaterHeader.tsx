@@ -132,7 +132,7 @@ export function TheaterHeader() {
           fontSize: "15px",
           opacity: 0.9
         }}>
-          Hồn kịch dân phương - Văn hoá truyền thế
+          Hồn kịch lưu phương - Văn hoá truyền thế
         </p>
 
         {/* Button */}
