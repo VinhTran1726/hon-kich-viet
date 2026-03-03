@@ -75,7 +75,7 @@ export function TheaterHeader() {
 
         {/* Button */}
         <a
-          href="#products"
+          href="#san-pham"
           style={{
             display: "inline-block",
             padding: "12px 32px",

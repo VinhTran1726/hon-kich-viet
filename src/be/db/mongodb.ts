@@ -7,13 +7,75 @@ if (!MONGODB_URI && !USE_MOCK_DB) {
   throw new Error("Vui lòng định nghĩa MONGODB_URI trong .env.local");
 }
 
-// Global cache để tránh tạo nhiều connection trong dev mode
-// @ts-ignore
-let cached = global.mongoose;
+type MongooseCache = {
+  conn: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
+};
 
-if (!cached) {
-  // @ts-ignore
-  cached = global.mongoose = { conn: null, promise: null };
+const globalWithMongoose = globalThis as typeof globalThis & { mongoose?: MongooseCache };
+
+const cached: MongooseCache = globalWithMongoose.mongoose ?? { conn: null, promise: null };
+globalWithMongoose.mongoose = cached;
+
+let listenersRegistered = false;
+
+function registerConnectionListeners() {
+  if (listenersRegistered) return;
+
+  mongoose.connection.on("connected", () => {
+    console.log("✅ MongoDB connected");
+  });
+
+  mongoose.connection.on("reconnected", () => {
+    console.log("🔄 MongoDB reconnected");
+  });
+
+  mongoose.connection.on("disconnected", () => {
+    console.warn("⚠️ MongoDB disconnected");
+  });
+
+  mongoose.connection.on("error", (error) => {
+    console.error("❌ MongoDB runtime error:", error.message);
+  });
+
+  listenersRegistered = true;
+}
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function connectWithRetry(maxAttempts = 3) {
+  const opts = {
+    bufferCommands: false,
+    serverSelectionTimeoutMS: 10000,
+    socketTimeoutMS: 45000,
+    connectTimeoutMS: 10000,
+    maxPoolSize: 20,
+    minPoolSize: 1,
+    retryWrites: true,
+    retryReads: true,
+    family: 4,
+  };
+
+  let lastError: unknown = null;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      const conn = await mongoose.connect(MONGODB_URI, opts);
+      return conn;
+    } catch (error) {
+      lastError = error;
+      const backoffMs = attempt * 1500;
+      console.warn(`⚠️ MongoDB connect attempt ${attempt}/${maxAttempts} failed. Retrying in ${backoffMs}ms...`);
+
+      if (attempt < maxAttempts) {
+        await sleep(backoffMs);
+      }
+    }
+  }
+
+  throw lastError;
 }
 
 async function connectDB() {
@@ -23,29 +85,20 @@ async function connectDB() {
     return { connection: { readyState: 1 } }; // Mock connection
   }
 
+  registerConnectionListeners();
+
+  if (mongoose.connection.readyState === 1) {
+    return mongoose;
+  }
+
   if (cached.conn) {
     return cached.conn;
   }
 
   if (!cached.promise) {
-    const opts = {
-  bufferCommands: false,
-  serverSelectionTimeoutMS: 10000,
-  socketTimeoutMS: 45000,
-  maxPoolSize: 10,
-  minPoolSize: 2,
-  retryWrites: true,
-  retryReads: true,
-  // dbName: "honkichviet",  // ❌ bỏ
-};
-
-
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      console.log("✅ MongoDB connected successfully to database: honkichviet");
-      return mongoose;
-    }).catch((error) => {
+    cached.promise = connectWithRetry(3).catch((error) => {
       console.error("\n❌ MongoDB connection error:");
-      console.error("   Error:", error.message);
+      console.error("   Error:", error instanceof Error ? error.message : String(error));
       console.error("\n💡 HƯỚNG DẪN FIX:");
       console.error("   ================================");
       console.error("   1. Vào: https://cloud.mongodb.com");

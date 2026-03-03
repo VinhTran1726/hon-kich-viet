@@ -16,6 +16,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Amazing Grotesk Demi";
+  src: url("/fonts/Amazing-Grotesk-Demi.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -30,7 +38,7 @@ body {
   background-attachment: fixed;
   color: var(--text);
   font-family:
-    "Amazing Grotesk Book Italic", "Noto Serif", "Segoe UI", Arial, sans-serif;
+    "Amazing Grotesk Demi", "Noto Serif", "Segoe UI", Arial, sans-serif;
   font-feature-settings:
     "liga" 1,
     "kern" 1;
@@ -55,6 +63,11 @@ h6 {
     "MTD Valky Bold", "Noto Serif", "Times New Roman", Georgia, serif !important;
   font-style: normal !important;
   font-weight: 700 !important;
+  font-variant-ligatures: none;
+  font-feature-settings:
+    "liga" 0,
+    "clig" 0,
+    "calt" 0;
 }
 
 /* Overlay tối cho toàn trang để text dễ đọc */

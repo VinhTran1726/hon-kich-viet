@@ -1,8 +1,12 @@
 // Test MongoDB connection
 const mongoose = require("mongoose");
 
-const MONGODB_URI =
-  "mongodb+srv://honkichviet:loploplop@cluster0.l5x63em.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const MONGODB_URI = process.env.MONGODB_URI;
+
+if (!MONGODB_URI) {
+  console.error("❌ Thiếu MONGODB_URI trong environment");
+  process.exit(1);
+}
 
 console.log("🔄 Đang kiểm tra kết nối MongoDB...");
 console.log("📍 URI:", MONGODB_URI.replace(/:[^:@]+@/, ":****@")); // Ẩn password
@@ -29,7 +33,7 @@ mongoose
     console.error("6. Click: Confirm");
     console.error("7. Đợi 1-2 phút để active");
     console.error("\n💡 HOẶC kiểm tra:");
-    console.error("- Password đúng chưa? (loploplop)");
+    console.error("- Password user DB đúng chưa?");
     console.error("- Cluster có đang chạy không?");
     process.exit(1);
   });
