@@ -1,5 +1,21 @@
 @import "../../src/fe/styles/tokens.css";
 
+@font-face {
+  font-family: "MTD Valky Bold";
+  src: url("/fonts/MTD-Valky-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Amazing Grotesk Book Italic";
+  src: url("/fonts/Amazing-Grotesk-Book-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -13,10 +29,32 @@ body {
   background-size: cover;
   background-attachment: fixed;
   color: var(--text);
-  font-family: "Noto Serif", "Times New Roman", Georgia, serif;
-  font-feature-settings: "liga" 1, "kern" 1;
+  font-family:
+    "Amazing Grotesk Book Italic", "Noto Serif", "Segoe UI", Arial, sans-serif;
+  font-feature-settings:
+    "liga" 1,
+    "kern" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family:
+    "MTD Valky Bold", "Noto Serif", "Times New Roman", Georgia, serif !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
 }
 
 /* Overlay tối cho toàn trang để text dễ đọc */

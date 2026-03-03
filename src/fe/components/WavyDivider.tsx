@@ -1,28 +1,5 @@
-export function WavyDivider({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 600 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="none"
-      style={{ width: '100%', height: '24px' }}
-    >
-      <path
-        d="M0 12C50 6 100 18 150 12C200 6 250 18 300 12C350 6 400 18 450 12C500 6 550 18 600 12"
-        stroke="var(--teal)"
-        strokeWidth="2"
-        fill="none"
-      />
-      <path
-        d="M0 18C40 15 80 21 120 18C160 15 200 21 240 18C280 15 320 21 360 18C400 15 440 21 480 18C520 15 560 21 600 18"
-        stroke="var(--teal)"
-        strokeWidth="1.5"
-        fill="none"
-        opacity="0.6"
-      />
-    </svg>
-  );
+export function WavyDivider() {
+  return null;
 }
 
 export function CloudDecor({ className = "" }: { className?: string }) {

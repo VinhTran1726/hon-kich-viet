@@ -1,4 +1,3 @@
-import { WavyDivider } from "./WavyDivider";
 import { Logo } from "./Logo";
 
 export function IntroSection() {
@@ -6,15 +5,10 @@ export function IntroSection() {
     <section
       style={{
         background: "var(--paper)",
-        padding: "48px 24px",
+        padding: "24px 24px 48px",
         position: "relative",
       }}
     >
-      {/* Top wavy divider */}
-      <div style={{ position: "absolute", top: "-12px", left: 0, right: 0 }}>
-        <WavyDivider />
-      </div>
-
       <div
         className="intro-grid"
         style={{
