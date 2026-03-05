@@ -135,9 +135,6 @@ export function CheckoutForm() {
             {submitting ? "Đang tạo đơn..." : "Đặt hàng"}
           </Button>
 
-          <div style={{ color:"var(--muted)", fontSize:12, lineHeight:1.6 }}>
-            * Hiện tại BE đang là placeholder để demo flow. Khi nối Shopify, bước này sẽ tạo checkout và đơn sẽ nằm trong Admin Shopify.
-          </div>
         </div>
       </div>
 
