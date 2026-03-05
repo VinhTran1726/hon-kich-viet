@@ -38,7 +38,7 @@ export function Footer() {
             </div>
             <div>
               <div style={{ fontWeight:600, color:"var(--text)", marginBottom:4 }}>Số điện thoại:</div>
-              <a href="tel:0123456789" style={{ color:"var(--gold2)" }}>0123 456 789</a>
+              <a href="tel:0329166499" style={{ color:"var(--gold2)" }}>0329 166 499</a>
             </div>
           </div>
         </div>

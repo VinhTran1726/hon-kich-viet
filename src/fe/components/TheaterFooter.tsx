@@ -29,7 +29,7 @@ export function TheaterFooter() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }} className="footer-contact-grid">
             <div style={{ padding: "14px 18px", background: "rgba(238, 212, 178, 0.08)", borderRadius: "8px", border: "1px solid rgba(238, 212, 178, 0.2)" }}>
               <div style={{ fontSize: "14px", fontWeight: 600, marginBottom: "6px", opacity: 0.8 }}>📱 Điện thoại</div>
-              <a href="tel:0123456789" style={{ fontSize: "15px", color: "var(--ink-beige)", textDecoration: "none", fontWeight: 600 }}>0329166499</a>
+              <a href="tel:0329166499" style={{ fontSize: "15px", color: "var(--ink-beige)", textDecoration: "none", fontWeight: 600 }}>0329166499</a>
             </div>
 
             <div style={{ padding: "14px 18px", background: "rgba(238, 212, 178, 0.08)", borderRadius: "8px", border: "1px solid rgba(238, 212, 178, 0.2)" }}>
