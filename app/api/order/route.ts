@@ -11,6 +11,14 @@ export const dynamic = "force-dynamic";
 
 const MAIL_TO_DEFAULT = "vinhtran5114@gmail.com";
 
+type MailConfig = {
+  host: string;
+  port: number;
+  user: string;
+  pass: string;
+  rejectUnauthorized: boolean;
+};
+
 function getEnvValue(key: string) {
   const fromProcess = process.env[key];
   if (fromProcess && fromProcess.trim().length > 0) {
@@ -44,16 +52,33 @@ function getEnvValue(key: string) {
   return undefined;
 }
 
-function createTransporter() {
+function getMailConfig(): MailConfig {
   const host = getEnvValue("SMTP_HOST") || "smtp.gmail.com";
   const port = Number(getEnvValue("SMTP_PORT") || 587);
   const user = getEnvValue("SMTP_USER");
   const pass = getEnvValue("SMTP_PASS")?.replace(/\s+/g, "");
   const rejectUnauthorized = (getEnvValue("SMTP_TLS_REJECT_UNAUTHORIZED") || "true").toLowerCase() !== "false";
 
-  if (!user || !pass) {
-    throw new Error("Thiếu SMTP_USER hoặc SMTP_PASS trong .env.local");
+  const missingVars: string[] = [];
+  if (!user) missingVars.push("SMTP_USER");
+  if (!pass) missingVars.push("SMTP_PASS");
+
+  if (missingVars.length > 0) {
+    throw new Error(`Missing SMTP environment variables: ${missingVars.join(", ")}`);
   }
+
+  if (!Number.isFinite(port) || port <= 0) {
+    throw new Error("Invalid SMTP_PORT: must be a positive number");
+  }
+
+  const smtpUser = user as string;
+  const smtpPass = pass as string;
+
+  return { host, port, user: smtpUser, pass: smtpPass, rejectUnauthorized };
+}
+
+function createTransporter(config: MailConfig) {
+  const { host, port, user, pass, rejectUnauthorized } = config;
 
   return nodemailer.createTransport({
     host,
@@ -63,7 +88,34 @@ function createTransporter() {
     tls: {
       rejectUnauthorized,
     },
+    connectionTimeout: 15_000,
+    greetingTimeout: 15_000,
+    socketTimeout: 20_000,
   });
+}
+
+function mapMailError(error: unknown) {
+  const err = error as { code?: string; message?: string; response?: string };
+  const message = err?.message || "Unknown mail error";
+  const response = err?.response || "";
+
+  if (message.includes("Missing SMTP environment variables") || message.includes("Invalid SMTP_PORT")) {
+    return "Thiếu hoặc sai biến môi trường SMTP trên Vercel. Hãy kiểm tra SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS.";
+  }
+
+  if (err?.code === "EAUTH") {
+    return "Xác thực SMTP thất bại. Kiểm tra SMTP_USER/SMTP_PASS (nếu dùng Gmail thì phải dùng App Password 16 ký tự).";
+  }
+
+  if (err?.code === "EENVELOPE" || /sender address rejected/i.test(response) || /from address/i.test(message)) {
+    return "Địa chỉ MAIL_FROM không hợp lệ hoặc bị SMTP từ chối. Hãy đặt MAIL_FROM trùng với SMTP_USER.";
+  }
+
+  if (err?.code === "ETIMEDOUT" || err?.code === "ECONNECTION") {
+    return "Không kết nối được SMTP server. Kiểm tra SMTP_HOST/SMTP_PORT và mạng của nhà cung cấp email.";
+  }
+
+  return "Không gửi được email đơn hàng. Vui lòng kiểm tra cấu hình SMTP và thử lại.";
 }
 
 function buildOrderEmail(payload: OrderDraft, orderId: string) {
@@ -139,10 +191,13 @@ export async function POST(req: Request) {
     // Tạo orderId duy nhất
     const orderId = "HKV-" + Math.random().toString(16).slice(2, 10).toUpperCase();
 
-    const transporter = createTransporter();
+    const smtpConfig = getMailConfig();
+    const transporter = createTransporter(smtpConfig);
     const mailTo = getEnvValue("MAIL_TO") || MAIL_TO_DEFAULT;
     const mailFrom = getEnvValue("MAIL_FROM") || getEnvValue("SMTP_USER") || mailTo;
     const { text, html } = buildOrderEmail(body, orderId);
+
+    await transporter.verify();
 
     await transporter.sendMail({
       from: mailFrom,
@@ -156,7 +211,7 @@ export async function POST(req: Request) {
     return NextResponse.json(resp);
   } catch (error) {
     console.error("Error sending order email:", error);
-    const resp: OrderResponse = { ok: false, message: "Không gửi được email đơn hàng. Vui lòng kiểm tra SMTP và thử lại." };
+    const resp: OrderResponse = { ok: false, message: mapMailError(error) };
     return NextResponse.json(resp, { status: 500 });
   }
 }
