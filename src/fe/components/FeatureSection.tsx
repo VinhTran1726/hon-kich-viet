@@ -57,7 +57,7 @@ export function FeatureSection() {
           <div>
             <div style={{ marginBottom: "16px" }}>
               <div style={{ color: "var(--ink-brown)", fontSize: "14px", fontWeight: 600, marginBottom: "8px" }}>📚 Phiên bản đơn</div>
-              <div style={{ color: "var(--ink-brown)", fontSize: "20px", fontWeight: 700, marginBottom: "4px" }}>55.000đ <span style={{ fontSize: "16px", textDecoration: "line-through", opacity: 0.5, fontWeight: 400 }}>150.000đ</span></div>
+              <div style={{ color: "var(--ink-brown)", fontSize: "20px", fontWeight: 700, marginBottom: "4px" }}>56.000đ <span style={{ fontSize: "16px", textDecoration: "line-through", opacity: 0.5, fontWeight: 400 }}>150.000đ</span></div>
               <p style={{ margin: 0, color: "var(--ink-brown)", fontSize: "13px", lineHeight: 1.6, opacity: 0.75 }}>Hành trình tìm về cội nguồn văn hóa sân khấu dân gian</p>
             </div>
             <div>
